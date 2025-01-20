@@ -12,11 +12,7 @@ func main() {
 	cfg := config.LoadConfig()
 
 	db.ConnectDB(cfg)
-
-	// cache.ConnectRedis(cfg)
-
 	defer db.DB.Close()
-	// defer cache.RDB.Close()
 
 	r := routes.SetupRouter()
 	if err := r.Run(cfg.RunPort); err != nil {

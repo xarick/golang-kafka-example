@@ -16,6 +16,9 @@ type Application struct {
 	PgUser   string
 	PgPass   string
 	PgDbName string
+
+	KafkaBroker string
+	KafkaTopic  string
 }
 
 func LoadConfig() Application {
@@ -34,6 +37,9 @@ func LoadConfig() Application {
 	cfg.PgUser = os.Getenv("PG_USER")
 	cfg.PgPass = os.Getenv("PG_PASS")
 	cfg.PgDbName = os.Getenv("PG_DB_NAME")
+
+	cfg.KafkaBroker = os.Getenv("KAFKA_BROKER")
+	cfg.KafkaTopic = os.Getenv("KAFKA_TOPIC")
 
 	return cfg
 }
