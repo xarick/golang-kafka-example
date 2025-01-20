@@ -14,5 +14,7 @@ func SetupRouter() *gin.Engine {
 		auth.POST("/login", handlers.LoginUser)
 	}
 
+	r.GET("/users", handlers.Users)
+
 	return r
 }
