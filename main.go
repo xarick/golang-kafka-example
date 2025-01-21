@@ -22,6 +22,8 @@ func main() {
 	r := routes.SetupRouter()
 	r.Use(middlewares.KafkaMiddleware(kafkaProducer, cfg.KafkaTopic))
 
+	go broker.StartConsumer(cfg)
+
 	if err := r.Run(cfg.RunPort); err != nil {
 		log.Fatalf("Serverda xatolik: %v", err)
 	}
