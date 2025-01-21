@@ -11,7 +11,7 @@ CREATE TABLE users (
 );
 ```
 
-- Docker Compose ni ishga tushirish (docker-compose.yml mavjud)
+- Run Docker Compose (docker-compose.yml is in the project)
 ```bash
 docker-compose up -d
 ```
