@@ -6,7 +6,6 @@ import (
 	"github.com/xarick/golang-kafka-example/broker"
 	"github.com/xarick/golang-kafka-example/config"
 	"github.com/xarick/golang-kafka-example/db"
-	"github.com/xarick/golang-kafka-example/middlewares"
 	"github.com/xarick/golang-kafka-example/routes"
 )
 
@@ -19,8 +18,7 @@ func main() {
 	kafkaProducer := broker.InitKafkaProducer(cfg.KafkaBroker)
 	defer kafkaProducer.Close()
 
-	r := routes.SetupRouter()
-	r.Use(middlewares.KafkaMiddleware(kafkaProducer, cfg.KafkaTopic))
+	r := routes.SetupRouter(kafkaProducer, cfg.KafkaTopic)
 
 	go broker.StartConsumer(cfg)
 
